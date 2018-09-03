@@ -8,14 +8,14 @@ public class Question3 {
     	int len = numbers.length;
     	int tot = 0;
     	int top = 0;
-    	for (int i = 0; i < len; i++) {
+    	for (int i = 0; i < len; i++) { //increment through original array
     		tot = 0;
-    		for (int j = len - 1; i + tot < len && j > -1; j--) {
-    			if (numbers[i + tot] == numbers[j]) {
+    		for (int j = len - 1; i + tot < len && j > -1; j--) { //increment through reverse array to compare values
+    			if (numbers[i + tot] == numbers[j]) { //find number of mirrored values
     				tot++;
     			}
-    			else {
-    				if (tot > 0) {
+    			else { //if no longer mirrored set, find maximum value
+    				if (tot > 0) { 
     					top = Math.max(tot, top);
     					tot = 0;
     				}

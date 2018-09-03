@@ -15,24 +15,25 @@ public class Question2 {
 	
 	public String getMostFrequentWord(String input, String stopwords){
 		
-		String[] divideInput = input.split(" ");
-		String[] divideStopWords = stopwords.split(" ");
+		String[] divideInput = input.split(" "); //divide input string into array of words
+		String[] divideStopWords = stopwords.split(" "); //divide stop words string into array of words
 		
-		for (int i = 0; i<divideInput.length; i++) {
+		for (int i = 0; i<divideInput.length; i++) { //loop through words to place them in hashmap
 			if(!map.containsKey(divideInput[i])) {
 				map.put(divideInput[i],1);
 			}
-			else {
+			else { //if the word already appears, increment appearance count
 				map.put(divideInput[i], (Integer) map.get(divideInput[i])+1);
 			}
 		}
 		
-		for (int i = 0; i<divideStopWords.length; i++) {
+		for (int i = 0; i<divideStopWords.length; i++) { //loop through hashmap to remove stopwords
 			if(map.containsKey(divideStopWords[i])) {
 				map.remove(divideStopWords[i]);
 			}
 		}
 		
+		//iterate through hashmap to find the word(s) with the highest appearance count
 		String maxKey = null;
 		int maxVal = 0;
 		for (Map.Entry<String, Integer> entry : map.entrySet()) {
@@ -40,12 +41,12 @@ public class Question2 {
 				maxKey = entry.getKey();
 				maxVal = entry.getValue();
 			}
-			else if (entry.getValue() == maxVal) {
+			else if (entry.getValue() == maxVal) { //more than one word with the same highest appearance count, set key to null
 				maxKey = null;
 			}
 		}
 		
-		for (int i = 0; i < divideInput.length; i++) {
+		for (int i = 0; i < divideInput.length; i++) { //clear hashmap for next test
 			if(map.containsKey(divideInput[i])) {
 				map.remove(divideInput[i]);
 			}
