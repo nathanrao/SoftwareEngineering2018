@@ -5,24 +5,24 @@ public class Question3 {
 	
     public int getMirrorCount(int[] numbers){
 		
-    	int length = numbers.length;
-    	int total = 0;
-    	int highest = 0;
-    	for (int i = 0; i < length; i++) {
-    		total = 0;
-    		for (int j = length - 1; i + total < length && j > -1; j--) {
-    			if (numbers[i + total] == numbers[j]) {
-    				total++;
+    	int len = numbers.length;
+    	int tot = 0;
+    	int top = 0;
+    	for (int i = 0; i < len; i++) {
+    		tot = 0;
+    		for (int j = len - 1; i + tot < len && j > -1; j--) {
+    			if (numbers[i + tot] == numbers[j]) {
+    				tot++;
     			}
     			else {
-    				if (total > 0) {
-    					highest = Math.max(total, highest);
-    					total = 0;
+    				if (tot > 0) {
+    					top = Math.max(tot, top);
+    					tot = 0;
     				}
     			}
     		}
-    		highest = Math.max(total, highest);
+    		top = Math.max(tot, top);
     	}
-    	return highest;	
+    	return top;	
 	}
 }
