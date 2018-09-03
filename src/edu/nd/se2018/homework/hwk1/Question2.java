@@ -7,52 +7,51 @@ import java.lang.String;
 
 public class Question2 {
 
-	public Question2(){}
+	Map<String, Integer> map;
+	
+	public Question2(){
+		map = new HashMap<String, Integer>();
+	}
 	
 	public String getMostFrequentWord(String input, String stopwords){
 		
-		Map<String, Integer> numWords = new HashMap<>();
+		String[] divideInput = input.split(" ");
+		String[] divideStopWords = stopwords.split(" ");
 		
-		String[] inputString = input.split(" ");
-		String[] stopWordString = input.split(" ");
-		
-		for(String i:inputString) {
-			Integer stopWordCheck = 0;
-			for(String j:stopWordString) {
-				if (i.equals(j)) {
-					stopWordCheck = 1;
-					break;
-				}
+		for (int i = 0; i<divideInput.length; i++) {
+			if(!map.containsKey(divideInput[i])) {
+				map.put(divideInput[i],1);
 			}
-			if (stopWordCheck==0) {
-				Integer increment = 1;
-				if(numWords.get(i) != null) {
-					increment = numWords.get(i);
-				}
-				numWords.put(i,increment+1);
+			else {
+				map.put(divideInput[i], (Integer) map.get(divideInput[i])+1);
 			}
 		}
 		
-		Map.Entry<String, Integer> maxEntry = null;
-		
-		for(Map.Entry<String, Integer> entry : numWords.entrySet()) {
-			if(maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
-				maxEntry = entry;
+		for (int i = 0; i<divideStopWords.length; i++) {
+			if(map.containsKey(divideStopWords[i])) {
+				map.remove(divideStopWords[i]);
 			}
 		}
 		
-		Integer tied = 0;
-		for(Map.Entry<String, Integer> secondEntry : numWords.entrySet()) {
-			if (secondEntry.getValue().compareTo(maxEntry.getValue()) == 0 && !secondEntry.getKey().equals(maxEntry.getKey())) {
-				tied = 1;
+		String maxKey = null;
+		int maxVal = 0;
+		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			if (entry.getValue() > maxVal) {
+				maxKey = entry.getKey();
+				maxVal = entry.getValue();
+			}
+			else if (entry.getValue() == maxVal) {
+				maxKey = null;
 			}
 		}
 		
-		/*String check = maxEntry.getKey();
-		if (tied == 1) {
-			check = null;
-		}*/
-		return stopWordString[1];
+		for (int i = 0; i < divideInput.length; i++) {
+			if(map.containsKey(divideInput[i])) {
+				map.remove(divideInput[i]);
+			}
+		}
+		
+		return maxKey;
 		
 	}
 }
