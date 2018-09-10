@@ -2,7 +2,7 @@ package homework3;
 
 public class Main {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args){
 		// TODO Auto-generated method stub
 		
 		Race Race = new Race();
