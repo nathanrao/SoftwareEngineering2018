@@ -22,7 +22,7 @@ public class raceTest1 {
 		race1.runRace();
 		assert(race1.giveWinner() == "Affirmed");
 		
-		Race race2 = new Race();
+		Race race2 = new Race(); //race 3
 		race2.addHorse("Citation", 0, 0.5, new early());
 		race2.addHorse("Secretariat", 1, 0.5, new slow());
 		race2.addHorse("Affirmed", 2, 0.5, new steady());
