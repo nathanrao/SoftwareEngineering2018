@@ -3,8 +3,8 @@ import org.junit.Test;
 
 public class raceTest1 {
 	@Test
-	public void test() throws InterruptException{
-		Race race = new Race();
+	public void test(){
+		Race race = new Race(); //race 1
 		race.addHorse("Citation", 0, 0.2, new early());
 		race.addHorse("Secretariat", 1, 0.25, new slow());
 		race.addHorse("Affirmed", 2, 0.3, new early());
