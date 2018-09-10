@@ -36,7 +36,7 @@ public class Race {
 		}
 	}
 	
-	public void runRace() throws InterruptedException {
+	public void runRace(){
 		int time = 0;
 		int horses = horseNames.size();
 		changeSpeed();
@@ -46,8 +46,6 @@ public class Race {
 			if(time == 0) { //open gun
 				System.out.println("And they're off!");
 			}
-			
-			Thread.sleep(100);
 			
 			for(int i = 0; i < horses; i++) { //update position
 				horsePos.set(i, horsePos.elementAt(i) + horseSpeed.elementAt(i));
