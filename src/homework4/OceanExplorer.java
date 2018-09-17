@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 public class OceanExplorer extends Application{
 
-	boolean[][] islandMap;
 	Pane root;
 	final int dimensions = 25;
 	final int islandCount = 10;
